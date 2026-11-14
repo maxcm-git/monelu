@@ -14,7 +14,7 @@ Déroulé :
  4. Contrôler le site produit (nombre de députés, sénateurs, couverture des votes et des photos…).
  5. Écrire site/sources.json (date de chaque source) pour la page « Mises à jour ».
 Code de sortie : 0 si tout est bon, 1 si une source ou un contrôle échoue (pour une tâche planifiée)."""
-import collections, filecmp, os, json, re, shutil, subprocess, sys, urllib.request, zipfile, datetime
+import collections, filecmp, os, json, re, shutil, subprocess, sys, time, urllib.error, urllib.request, zipfile, datetime
 from pathlib import Path
 
 ROOT = Path(__file__).parent
@@ -47,8 +47,16 @@ def entete(url):
 
 
 def datagouv(dataset):
-    with http(f"https://www.data.gouv.fr/api/1/datasets/{dataset}/") as r:
-        return json.load(r)["resources"]
+    # data.gouv.fr renvoie parfois « 503 Service Unavailable » quelques minutes : on réessaie avant d'échouer.
+    for attente in (30, 90, 180, None):
+        try:
+            with http(f"https://www.data.gouv.fr/api/1/datasets/{dataset}/") as r:
+                return json.load(r)["resources"]
+        except (urllib.error.URLError, TimeoutError) as e:
+            if attente is None or getattr(e, "code", 500) < 500:
+                raise
+            print(f"  data.gouv.fr indisponible ({e}), nouvel essai dans {attente} s")
+            time.sleep(attente)
 
 
 def sources():
