@@ -14,7 +14,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 SITE, ETAT = ROOT / "site", ROOT / "data" / "raw" / "alertes_etat.json"
-ADRESSE = "https://maxcm-git.github.io/politiscope/"
+ADRESSE = "https://maxcm-git.github.io/monelu/"
 JOUR = 20 * 3600  # un envoi par jour au plus (marge pour l'heure du passage)
 
 
