@@ -21,7 +21,7 @@ from build_local import reduire
 RAW = ROOT / "data" / "raw"
 PHOTOS = ROOT / "site" / "photos"
 PRENOM, NOM = "Prénom de l'élu", "Nom de l'élu"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; Politiscope/0.1; prototype de transparence; contact@politiscope.example)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; Politiscope/0.1; prototype de transparence; contact@monelu.eu)"}
 ORGANES = {"COMPER": "Commission permanente", "CNPE": "Commission d'enquête", "CNPS": "Commission spéciale",
            "DELEG": "Délégation", "MISINFO": "Mission d'information", "MISINFOCOM": "Mission d'information",
            "BUREAU": "Bureau de l'Assemblée", "OFFPAR": "Office parlementaire"}

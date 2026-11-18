@@ -102,7 +102,7 @@ Planifier (exemple, non installé) : une tâche chaque matin à 6 h 30, sur une 
 
 ## Pages ajoutées aux étapes 2 et 3
 Comparer (2 à 5 personnes), Signaler une erreur et Droit de réponse (formulaires qui ouvrent la messagerie vers
-l'adresse provisoire contact@politiscope.example, rien n'est stocké), À propos et méthode, mode sombre,
+l'adresse contact@monelu.eu, rien n'est stocké), À propos et méthode, mode sombre,
 Qui fait quoi (fonctions expliquées), Mises à jour, écouter la page (synthèse vocale), partager.
 
 ## Parlement en direct, présence, rémunération perçue

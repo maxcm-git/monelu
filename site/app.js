@@ -42,7 +42,7 @@ const depOf = c => (c.startsWith("97") || c.startsWith("98")) ? c.slice(0, 3) : 
 const initiales = (p, n) => ((p || "")[0] || "") + ((n || "")[0] || "");
 const depNom = c => (META.deps?.[c] || {}).nom || c;
 const eur = n => `${Math.round(n).toLocaleString("fr-FR")} €`;
-const CONTACT = "contact@politiscope.example";  // adresse provisoire (arbitrage de Max)
+const CONTACT = "contact@monelu.eu";
 const photoDe = e => e.shard === "fr" ? BY[e.slug]?.photo : e.photo;
 const regNom = c => (META.regions || {})[c] || c;
 
@@ -950,7 +950,7 @@ async function formulaire(type, qs, j) {
       adressée au directeur de la publication dans les trois mois suivant la mise en ligne du contenu concerné ; la réponse
       est alors insérée dans les trois jours suivant sa réception, sauf motif légitime de refus.</p>
       <p class="muted">Le directeur de la publication sera désigné avant la mise en ligne publique. En attendant, les demandes
-      parviennent à l'adresse provisoire ${CONTACT}.</p></div>`
+      parviennent à l'adresse ${CONTACT}.</p></div>`
       : `<p class="muted">Une information fausse, manquante ou dépassée ? Indiquez-la ici. Tout ce qui est affiché vient d'une source
       officielle : si l'erreur vient de la source, nous le signalerons à l'organisme qui la publie.</p>`}
     <form class="formulaire" id="f">
@@ -963,7 +963,7 @@ async function formulaire(type, qs, j) {
         <label>Votre nom (facultatif)<input name="nom"></label>`}
       <label>Votre e-mail${reponse ? "" : " (facultatif, pour vous répondre)"}<input name="email" type="email" ${reponse ? "required" : ""}></label>
       <button class="btn" type="submit">Préparer l'e-mail</button>
-      <p class="src">L'envoi passe par votre messagerie, vers ${CONTACT} (adresse provisoire). Vos coordonnées servent uniquement
+      <p class="src">L'envoi passe par votre messagerie, vers ${CONTACT}. Vos coordonnées servent uniquement
         à traiter la demande ; elles ne sont jamais publiées ni transmises.</p>
     </form>`;
   document.getElementById("f").addEventListener("submit", e => {
