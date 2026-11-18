@@ -1233,5 +1233,7 @@ document.getElementById("ecouter").addEventListener("click", e => {
   s.speak(u);
 });
 window.addEventListener("hashchange", () => window.speechSynthesis?.cancel());
-window.addEventListener("hashchange", () => { window.umami?.track(); route(); if (!location.hash.includes("annuaire")) window.scrollTo(0, 0); });
+// Umami ignore le hash : on lui donne #/p/x sous la forme /p/x.
+window.compter = () => window.umami?.track(p => ({...p, url: location.hash.slice(1) || "/"}));
+window.addEventListener("hashchange", () => { compter(); route(); if (!location.hash.includes("annuaire")) window.scrollTo(0, 0); });
 Suivi.init().finally(route);  // état du compte connu avant d'afficher la première page
