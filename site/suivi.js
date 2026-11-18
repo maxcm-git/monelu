@@ -142,7 +142,7 @@ async function pageSuivis(qs, j) {
       <form class="formulaire" id="f-compte" style="max-width:420px">
         <label>Adresse e-mail<input type="email" name="email" required autocomplete="email"></label>
         <label>Mot de passe (8 caractères au moins)<input type="password" name="mdp" minlength="8" required autocomplete="current-password"></label>
-        <label class="case"><input type="checkbox" name="accord" required> J'accepte que Politiscope enregistre mon adresse e-mail et la liste des
+        <label class="case"><input type="checkbox" name="accord" required> J'accepte que Mon Élu enregistre mon adresse e-mail et la liste des
           élus que je suis, pour me les afficher (et m'envoyer des alertes si je les demande). Je peux tout supprimer à tout moment.</label>
         <div class="actions-lieu"><button class="btn" name="action" value="creer">Créer mon compte</button>
           <button class="btn ghost" name="action" value="connexion" formnovalidate>J'ai déjà un compte</button></div>

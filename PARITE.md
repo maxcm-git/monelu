@@ -122,7 +122,7 @@ conseiller municipal (Gustavo Petta).
    officielles AN/Sénat ; les photos de campagne/parti restent la propriété de leur auteur
    (risque droit d'auteur plus élevé) → créditer la source sous chaque photo.
 2. **Candidats non élus** : **non publiés** (ni résultats nominatifs, ni historique).
-3. **Nom du site** : « Politiscope » conservé comme titre de travail.
+3. **Nom du site** : « Mon Élu » (monelu.eu), choisi par Max.
 4. **Alertes et formulaires** : adresse temporaire ; destinataire définitif plus tard.
 5. **Éditeur responsable** (mentions légales, droit de réponse) : plus tard.
 

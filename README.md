@@ -1,4 +1,4 @@
-# Politiscope — prototype
+# Mon Élu — monelu.eu
 
 Transparence des élus français en données ouvertes.
 **515 099 personnes** : Président, gouvernement, Parlement, eurodéputés et tous les élus locaux
@@ -42,7 +42,7 @@ python3 update.py --check  # contrôle seulement le site déjà construit
 Planifier (exemple, non installé) : une tâche chaque matin à 6 h 30, sur une machine allumée en permanence
 (un petit serveur est préférable à un ordinateur portable) :
 ```
-30 6 * * * cd /chemin/vers/Politiscope && /usr/bin/python3 update.py >> data/update.log 2>&1
+30 6 * * * cd /chemin/vers/monelu && /usr/bin/python3 update.py >> data/update.log 2>&1
 ```
 
 ## Données
@@ -163,7 +163,7 @@ d'*intérêts* sont réutilisables (art. 5 IV et 12 I). Chaque fiche dit où les
 - élus locaux : ni publiées ni consultables.
 La date de mise à disposition vient de `hatvp_liste.csv` (lignes dsp* « Livrée ») : seule cette date est reprise.
 
-Nom « Politiscope » = titre de travail, à valider.
+Nom : « Mon Élu » (domaine monelu.eu), choisi par Max le 18/11/2026.
 
 ## Suivre des élus, image à partager
 - **Mes élus** (`site/suivi.js`) : bouton ☆ Suivre sur chaque fiche, page `#/suivis`, bandeau sous le menu (masquable).

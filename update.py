@@ -19,7 +19,7 @@ from pathlib import Path
 
 ROOT = Path(__file__).parent
 RAW, CACHE, STAGE, SITE = ROOT / "data" / "raw", ROOT / "data" / "_cache", ROOT / "data" / "_staging", ROOT / "site"
-UA = {"User-Agent": "Mozilla/5.0 (compatible; Politiscope/0.1; prototype de transparence; contact@monelu.eu)"}
+UA = {"User-Agent": "Mozilla/5.0 (compatible; MonElu/1.0; transparence des élus; contact@monelu.eu)"}
 AN = "https://data.assemblee-nationale.fr/static/openData/repository/17"
 RNE_FICHIERS = [  # fragment de l'adresse data.gouv -> fichier local (ordre : le plus spécifique d'abord)
     ("conseiller-municipal", "conseillers_municipaux.csv"), ("conseiller-communautaire", "conseillers_communautaires.csv"),
@@ -147,7 +147,7 @@ def complet(dest, taille):
 
 def telecharger(url, dest, conversion, taille=0):
     dest.parent.mkdir(parents=True, exist_ok=True)
-    curl = ["curl", "-sfL", "--retry", "3", "--max-time", "1200", "-A", "Mozilla/5.0 (compatible; Politiscope; +contact@monelu.eu)"]
+    curl = ["curl", "-sfL", "--retry", "3", "--max-time", "1200", "-A", "Mozilla/5.0 (compatible; MonElu; +contact@monelu.eu)"]
     if conversion == "curl":  # le site du Parlement européen refuse le client HTTP de Python
         subprocess.run(curl + ["-o", str(dest), url], check=True)
         return

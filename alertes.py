@@ -59,9 +59,9 @@ def changements(avant, apres):
 def courriel(par_elu):
     """Sujet, texte et HTML d'un résumé : {id: (nom, [phrases])}."""
     n = len(par_elu)
-    sujet = f"Politiscope : du nouveau pour {next(iter(par_elu.values()))[0]}" if n == 1 else f"Politiscope : du nouveau pour {n} élus que vous suivez"
+    sujet = f"Mon Élu : du nouveau pour {next(iter(par_elu.values()))[0]}" if n == 1 else f"Mon Élu : du nouveau pour {n} élus que vous suivez"
     texte = "\n\n".join(f"{nom}\n" + "\n".join(f"- {x}" for x in l) + f"\n{ADRESSE}#/p/{i}" for i, (nom, l) in par_elu.items())
-    pied = f"Vous recevez ce message parce que vous avez demandé ces alertes sur Politiscope. Pour les arrêter : {ADRESSE}#/suivis"
+    pied = f"Vous recevez ce message parce que vous avez demandé ces alertes sur Mon Élu. Pour les arrêter : {ADRESSE}#/suivis"
     corps = "".join(f'<h3 style="margin:18px 0 4px"><a href="{ADRESSE}#/p/{html.escape(i)}">{html.escape(nom)}</a></h3><ul>'
                     + "".join(f"<li>{html.escape(x)}</li>" for x in l) + "</ul>" for i, (nom, l) in par_elu.items())
     return sujet, f"{texte}\n\n{pied}", (f'<div style="font-family:sans-serif;max-width:560px">{corps}<p style="color:#666;font-size:13px">'
@@ -79,7 +79,7 @@ def destinataires(jeton):
 
 def envoyer(cle, expediteur, a, sujet, texte, html_):
     req = urllib.request.Request("https://api.brevo.com/v3/smtp/email", headers={"api-key": cle, "Content-Type": "application/json"},
-                                 data=json.dumps({"sender": {"name": "Politiscope", "email": expediteur}, "to": [{"email": a}],
+                                 data=json.dumps({"sender": {"name": "Mon Élu", "email": expediteur}, "to": [{"email": a}],
                                                   "subject": sujet, "textContent": texte, "htmlContent": html_,
                                                   "headers": {"List-Unsubscribe": f"<{ADRESSE}#/suivis>"}}).encode())
     urllib.request.urlopen(req, timeout=60).read()

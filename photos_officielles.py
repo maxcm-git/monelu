@@ -18,7 +18,7 @@ from build_local import norm, reduire
 
 RAW = Path(__file__).parent / "data" / "raw"
 OUT = RAW / "photos_officielles"
-UA = {"User-Agent": "Mozilla/5.0 (Macintosh) Politiscope-prototype/0.1 (contact@monelu.eu)"}
+UA = {"User-Agent": "Mozilla/5.0 (Macintosh) MonElu/0.1 (contact@monelu.eu)"}
 PAGES = re.compile(r"maire|presid|elus?\b|elu-|conseil|equipe|majorit|institution|executif|assemblee|gouvernance|vie-politique|mairie|portrait|biographie", re.I)
 
 

@@ -1,4 +1,4 @@
-// Politiscope — rendu client. Données nationales embarquées (data.js), le reste chargé à la demande :
+// Mon Élu — rendu client. Données nationales embarquées (data.js), le reste chargé à la demande :
 // d/<dep>.json (communes + liste des élus), c/<commune>.json (fiches), r/<région>.json, n/<lettre>.json,
 // geo/*.json (cartes pré-projetées), communes.json (recherche).
 const DATA = window.DATA || [], META = window.META || {counts: {}};
@@ -969,7 +969,7 @@ async function formulaire(type, qs, j) {
   document.getElementById("f").addEventListener("submit", e => {
     e.preventDefault();
     const d = Object.fromEntries(new FormData(e.target));
-    const sujet = `[${reponse ? "Droit de réponse" : "Signalement"}] ${qui || "Politiscope"}${id ? ` (${id})` : ""}`;
+    const sujet = `[${reponse ? "Droit de réponse" : "Signalement"}] ${qui || "Mon Élu"}${id ? ` (${id})` : ""}`;
     const corps = [p ? `Fiche : ${location.origin}${location.pathname}#/p/${id}` : "", d.type ? `Type : ${d.type}` : "",
       d.passage ? `Passage contesté :\n${d.passage}` : "", `${reponse ? "Réponse" : "Message"} :\n${d.message}`,
       d.nom ? `Nom : ${d.nom}` : "", d.email ? `E-mail : ${d.email}` : ""].filter(Boolean).join("\n\n");

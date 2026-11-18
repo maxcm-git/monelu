@@ -14,7 +14,7 @@ import build_local
 
 RAW = Path(__file__).parent / "data" / "raw"
 OUT = RAW / "photos_locales"
-UA = {"User-Agent": "Politiscope-prototype/0.1 (contact@monelu.eu)"}
+UA = {"User-Agent": "MonElu/0.1 (contact@monelu.eu)"}
 REQ = """SELECT DISTINCT ?p ?label ?naiss ?img WHERE {
   ?p wdt:P27 wd:Q142; wdt:P31 wd:Q5; wdt:P18 ?img; wdt:P569 ?naiss . %s
   FILTER(YEAR(?naiss) > 1935) ?p rdfs:label ?label FILTER(LANG(?label) = "fr") }"""

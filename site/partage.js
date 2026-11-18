@@ -23,7 +23,7 @@ function elementsDeLaPage() {
 
 function enteteDeLaPage() {
   const h1 = document.querySelector("#app h1"), k = document.querySelector("#app .kicker"), img = document.querySelector("#app .fiche-tete img");
-  return {titre: h1?.innerText.trim() || "Politiscope", sous: k?.innerText.replace(/\s+/g, " ").trim() || "", photo: img?.src || "",
+  return {titre: h1?.innerText.trim() || "Mon Élu", sous: k?.innerText.replace(/\s+/g, " ").trim() || "", photo: img?.src || "",
     credit: document.querySelector("#app figcaption")?.innerText.replace(/^Photo : /, "") || ""};
 }
 
@@ -49,7 +49,7 @@ async function dessiner(canvas, format, choix, tete) {
   ctx.fillStyle = C.fond; ctx.fillRect(0, 0, W, H);
   ctx.fillStyle = C.accent; ctx.fillRect(0, 0, W, 18);
   let y = 110;
-  ctx.fillStyle = C.encre; ctx.font = '900 40px "Inter", sans-serif'; ctx.fillText("Politiscope", M, y);
+  ctx.fillStyle = C.encre; ctx.font = '900 40px "Inter", sans-serif'; ctx.fillText("Mon Élu", M, y);
   ctx.fillStyle = C.gris; ctx.font = '500 26px "Inter", sans-serif';
   ctx.textAlign = "right"; ctx.fillText("Les élus, en données officielles", W - M, y); ctx.textAlign = "left";
   y += 60;
@@ -118,7 +118,7 @@ async function dessiner(canvas, format, choix, tete) {
   ctx.fillText(lignes(ctx, pied, W - 2 * M)[0], M, H - 90);
   if (choix.photo && tete.photo && tete.credit) ctx.fillText(lignes(ctx, `Photo : ${tete.credit}`, W - 2 * M)[0], M, H - 56);
   ctx.textAlign = "right"; ctx.fillStyle = C.encre; ctx.font = '700 26px "Inter", sans-serif';
-  ctx.fillText(location.host.includes("localhost") ? "politiscope" : location.host, W - M, H - 56); ctx.textAlign = "left";
+  ctx.fillText("monelu.eu", W - M, H - 56); ctx.textAlign = "left";
   return deborde;
 }
 
