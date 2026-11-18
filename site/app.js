@@ -1012,7 +1012,7 @@ function aPropos() {
       <div class="kv"><b>HATVP</b><span><a href="https://www.hatvp.fr" target="_blank" rel="noopener" style="color:var(--accent)">hatvp.fr ↗</a> · déclarations d'intérêts</span></div>
       <div class="kv"><b>INSEE et geo.api.gouv.fr</b><span>communes, populations, cantons ; contours IGN (Licence Ouverte)</span></div>
       <div class="kv"><b>Photos</b><span>sites de l'Assemblée nationale, du Sénat et du Parlement européen ; à défaut Wikimedia Commons (licences libres). Crédit sous chaque photo.</span></div></section>
-    <section class="sec"><h2>Confidentialité</h2><ul class="puces"><li>Aucun cookie publicitaire, aucune mesure d'audience pour l'instant.</li>
+    <section class="sec"><h2>Confidentialité</h2><ul class="puces"><li>Aucun cookie publicitaire, mesure d'audience anonyme et sans cookie (Umami) : pages vues, provenance, type d'appareil, pays ; aucune donnée personnelle.</li>
       <li>Les formulaires ouvrent votre messagerie : rien n'est stocké par le site.</li>
       <li><b>Compte « Mes élus » (facultatif)</b> : adresse e-mail et liste des élus suivis, enregistrées avec votre accord explicite,
         car elles peuvent révéler une opinion politique. Vous pouvez tout retirer depuis « Mes élus » et demander la suppression du compte à ${CONTACT}.</li>
@@ -1233,5 +1233,5 @@ document.getElementById("ecouter").addEventListener("click", e => {
   s.speak(u);
 });
 window.addEventListener("hashchange", () => window.speechSynthesis?.cancel());
-window.addEventListener("hashchange", () => { route(); if (!location.hash.includes("annuaire")) window.scrollTo(0, 0); });
+window.addEventListener("hashchange", () => { window.umami?.track(); route(); if (!location.hash.includes("annuaire")) window.scrollTo(0, 0); });
 Suivi.init().finally(route);  // état du compte connu avant d'afficher la première page
