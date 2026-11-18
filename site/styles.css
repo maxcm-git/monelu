@@ -1,33 +1,34 @@
-/* Politiscope — « papier et encre ». Un serif éditorial pour les titres et les chiffres, une sans-serif
-   conçue pour la lisibilité pour le texte, une mono pour les sources. Les couleurs disent le niveau
-   d'institution ou le lieu, jamais un parti ; pas de rouge, pour éviter toute lecture partisane. */
+/* Politiscope — bleu nuit et bleu ciel (structure de DESIGN.md, teintes bleues). Inter partout, en 900 très serré pour les titres
+   et les grands chiffres ; mono pour les sources. Boutons, onglets et étiquettes en pilule ; surfaces plates.
+   Les couleurs de niveau disent l'institution ou le lieu, jamais un parti ; pas de rouge. */
 :root{
-  --bg:#f6f4ee; --surface:#fffdf8; --ink:#1b1d22; --muted:#5d6470; --line:#e2ddd2; --soft:#efebe2;
-  --accent:#1f3f8f; --accent-ink:#fff; --ok:#2f7a4a; --no:#9b3d2e;
+  --bg:#ffffff; --surface:#ffffff; --ink:#0b0f17; --texte:#43474f; --muted:#636b77; --line:#e8edf3; --soft:#e8edf3;
+  --accent:#0b2545; --accent-ink:#8fd0ff; --lime:#8fd0ff; --forest:#0b2545; --brume:#e3f0fb; --ok:#2f7a4a; --no:#9b3d2e;
   --national:#1f3f8f; --europe:#4c4aa8; --region:#7a4b8c; --departement:#1d7a6e;
   --interco:#9a6b16; --commune:#b8552b; --etranger:#5e6470;
-  --serif:"Fraunces",Georgia,"Times New Roman",serif;
-  --sans:"Instrument Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --serif:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;  /* titres : Inter 900 (substitut de Wise Sans) */
+  --sans:"Inter",system-ui,-apple-system,"Segoe UI",sans-serif;
   --mono:"IBM Plex Mono",ui-monospace,Menlo,monospace;
   --p1:#3f4bb5; --p2:#14806f; --p3:#a8730f; --p4:#8a4a9c; --p5:#56606b;  /* comparer : une couleur par personne */  /* luminosité du texte coloré par région (app.js, RC) */
-  --radius:12px; --max:1180px; --ombre:0 1px 2px #1b1d220d,0 8px 24px #1b1d2212;
+  --radius:10px; --max:1200px; --ombre:0 0 0 1px #0b0f171f;
 }
-:root[data-theme="dark"]{--bg:#121417;--surface:#1a1d22;--ink:#ece8df;--muted:#a3a8b0;--line:#2c3037;--soft:#23272d;
-  --accent:#8fb0ec;--accent-ink:#121417;--ok:#6cc08a;--no:#e08c74;
+:root[data-theme="dark"]{--bg:#0a111c;--surface:#101a2a;--ink:#eef3fa;--texte:#cfd7e3;--muted:#9ea9b8;--line:#22314a;--soft:#17233a;--brume:#16294a;
+  --accent:#8fd0ff;--accent-ink:#0b2545;--ok:#6cc08a;--no:#e08c74;
   --national:#7f9fe6;--europe:#a3a1ec;--region:#c497d6;--departement:#4fbcae;--interco:#d8a648;--commune:#e28a5e;--p1:#93a0f0;--p2:#5cc8b5;--p3:#e3b25a;--p4:#cf9ae0;--p5:#a6adb6}
-@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121417;--surface:#1a1d22;--ink:#ece8df;--muted:#a3a8b0;
-  --line:#2c3037;--soft:#23272d;--accent:#8fb0ec;--accent-ink:#121417;--ok:#6cc08a;--no:#e08c74;
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0a111c;--surface:#101a2a;--ink:#eef3fa;--texte:#cfd7e3;--muted:#9ea9b8;
+  --line:#22314a;--soft:#17233a;--brume:#16294a;--accent:#8fd0ff;--accent-ink:#0b2545;--ok:#6cc08a;--no:#e08c74;
   --national:#7f9fe6;--europe:#a3a1ec;--region:#c497d6;--departement:#4fbcae;--interco:#d8a648;--commune:#e28a5e;--p1:#93a0f0;--p2:#5cc8b5;--p3:#e3b25a;--p4:#cf9ae0;--p5:#a6adb6}}
 
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 var(--sans);font-variant-numeric:tabular-nums}
+body{margin:0;background:var(--bg);color:var(--texte);font:16px/1.55 var(--sans);font-variant-numeric:tabular-nums;font-feature-settings:"calt";letter-spacing:-.006em}
+h1,h2,h3,b,strong{color:var(--ink)}
 a{color:inherit;text-decoration:none}
 button{font:inherit;color:inherit}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px;border-radius:4px}
 .wrap{max-width:var(--max);margin:0 auto;padding:0 16px}
 .num{font-variant-numeric:lining-nums tabular-nums}
-.big{font-family:var(--serif);font-weight:800;font-optical-sizing:auto;letter-spacing:-.02em;line-height:.9;
+.big{font-family:var(--serif);font-weight:900;letter-spacing:-.04em;line-height:.85;
   font-variant-numeric:lining-nums tabular-nums}
 .src{font-family:var(--mono);font-size:12px;color:var(--muted);margin:12px 0 0;line-height:1.55}
 .src a{color:var(--accent)}
@@ -312,3 +313,43 @@ dialog.dlg-image::backdrop{background:#0008}
 .img-apercu canvas{width:100%;height:auto;border-radius:10px;box-shadow:var(--ombre);position:sticky;top:0}
 @media (max-width:860px){.img-grille{grid-template-columns:1fr}.img-apercu{order:-1;max-width:260px;margin:0 auto}}
 @media (max-width:860px){header .actions{gap:6px}header .actions .btn{padding:7px 9px}header .actions .btn:first-child{display:none}}
+
+/* ---------- Design « bleu nuit et ciel » (structure DESIGN.md) ---------- */
+/* Titres : Inter 900, très serrés */
+.lieu-h h1,.fiche h1{font-weight:900;letter-spacing:-.04em;line-height:.88}
+.sec > h2,h2.sec,.fonction h2,.carte .titre,.panneau h3,.niveau h3,.enbref h2,.img-choix h2{font-weight:800;letter-spacing:-.02em}
+.sec > h2::before{background:var(--lime);height:4px;border-radius:9999px}
+.hero p{font-weight:500;letter-spacing:-.01em;color:var(--texte)}
+.az-l,.jauge-t b,.photo{font-weight:900;letter-spacing:-.04em}
+.logo{font:900 22px/1 var(--serif);letter-spacing:-.04em;color:var(--forest)}
+.logo svg{color:var(--forest)}
+:root[data-theme="dark"] .logo,:root[data-theme="dark"] .logo svg{color:var(--lime)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .logo,:root:not([data-theme="light"]) .logo svg{color:var(--lime)}}
+/* Boutons : pilule ; principal = lime sur texte forêt, secondaire = contour forêt */
+.btn{border-radius:9999px;background:var(--lime);color:var(--forest);border:1px solid var(--lime);font-weight:600;padding:9px 18px}
+.btn:hover{filter:brightness(.96)}
+.btn.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
+.btn.ghost:hover{background:var(--brume);border-color:var(--ink)}
+.btn[aria-pressed="true"],.segments .btn[aria-pressed="true"],.btn.suivre[aria-pressed="true"]{background:var(--forest);color:var(--lime);border-color:var(--forest)}
+:focus-visible{outline-color:var(--accent);border-radius:9999px}
+/* Onglets : sélecteur en pilules, l'actif en lime */
+nav.tabs{gap:4px;padding:8px 0}
+nav.tabs a{padding:8px 14px;border:0;border-radius:9999px;font-weight:600;color:var(--texte)}
+nav.tabs a:hover{background:var(--brume);color:var(--ink)}
+nav.tabs a.on{background:var(--lime);color:var(--forest)}
+/* Bandeaux */
+.maj{background:var(--soft)}
+.bandeau-suivi{background:var(--forest);color:#fff}
+.bandeau-suivi b{color:var(--lime)}
+.bandeau-suivi .btn{background:var(--lime);color:var(--forest);border-color:var(--lime)}
+/* Étiquettes en pilule, champs et cartes à 10 px, grandes cartes à 28 px */
+.pastille,.loi,.vpos b{border-radius:9999px}
+.pastille{background:var(--brume);color:var(--accent)}
+.recherche,.filtres input,.filtres select,.formulaire input,.formulaire textarea,.formulaire select{border-color:#8a919c}
+.recherche:focus,.filtres input:focus,.filtres select:focus,.formulaire input:focus,.formulaire textarea:focus{border-color:var(--ink)}
+.fiche,dialog.dlg-image{border-radius:28px}
+.fiche{box-shadow:inset 0 6px 0 var(--lvl);border-color:var(--line)}
+.suggestions{box-shadow:0 6px 20px #00000014}
+.encart{box-shadow:inset 3px 0 0 var(--lime);background:var(--brume);border-color:transparent}
+.enbref{background:var(--brume);border-color:transparent}
+.big{color:var(--ink)}

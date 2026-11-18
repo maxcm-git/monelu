@@ -30,7 +30,7 @@ function enteteDeLaPage() {
 function couleurs() {
   const s = getComputedStyle(document.querySelector("#app .fiche") || document.documentElement);
   const v = n => s.getPropertyValue(n).trim();
-  return {fond: "#f6f4ee", carte: "#fffdf8", encre: "#1b1d22", gris: "#5d6470", trait: "#e2ddd2", accent: v("--lvl") || "#1f3f8f"};
+  return {fond: "#ffffff", carte: "#e8edf3", encre: "#0b0f17", gris: "#43474f", trait: "#e8edf3", accent: v("--lvl") || "#0b2545"};
 }
 
 function lignes(ctx, texte, largeur) {  // coupe un texte en lignes qui tiennent dans « largeur »
@@ -49,8 +49,8 @@ async function dessiner(canvas, format, choix, tete) {
   ctx.fillStyle = C.fond; ctx.fillRect(0, 0, W, H);
   ctx.fillStyle = C.accent; ctx.fillRect(0, 0, W, 18);
   let y = 110;
-  ctx.fillStyle = C.encre; ctx.font = '700 40px "Fraunces", Georgia, serif'; ctx.fillText("Politiscope", M, y);
-  ctx.fillStyle = C.gris; ctx.font = '500 26px "Instrument Sans", sans-serif';
+  ctx.fillStyle = C.encre; ctx.font = '900 40px "Inter", sans-serif'; ctx.fillText("Politiscope", M, y);
+  ctx.fillStyle = C.gris; ctx.font = '500 26px "Inter", sans-serif';
   ctx.textAlign = "right"; ctx.fillText("Les élus, en données officielles", W - M, y); ctx.textAlign = "left";
   y += 60;
   if (tete.photo && choix.photo) {
@@ -60,18 +60,18 @@ async function dessiner(canvas, format, choix, tete) {
       ctx.save(); ctx.beginPath(); ctx.roundRect(M, y, T, T, r); ctx.clip();
       const s = Math.max(T / img.width, T / img.height);
       ctx.drawImage(img, M + (T - img.width * s) / 2, y + (T - img.height * s) / 2, img.width * s, img.height * s); ctx.restore();
-      if (format === "carre") { ctx.font = '800 64px "Fraunces", Georgia, serif'; ctx.fillStyle = C.encre;
+      if (format === "carre") { ctx.font = '900 64px "Inter", sans-serif'; ctx.fillStyle = C.encre;
         let yy = y + 70; for (const l of lignes(ctx, tete.titre, W - 2 * M - T - 40).slice(0, 3)) { ctx.fillText(l, M + T + 40, yy); yy += 72; }
-        ctx.font = '600 26px "Instrument Sans", sans-serif'; ctx.fillStyle = C.gris;
+        ctx.font = '600 26px "Inter", sans-serif'; ctx.fillStyle = C.gris;
         for (const l of lignes(ctx, tete.sous, W - 2 * M - T - 40).slice(0, 3)) { ctx.fillText(l, M + T + 40, yy); yy += 34; }
         y += T + 50; tete = {...tete, fait: true};
       } else y += T + 60;
     } catch { /* photo illisible : on continue sans */ }
   }
   if (!tete.fait) {
-    ctx.fillStyle = C.gris; ctx.font = '600 28px "Instrument Sans", sans-serif';
+    ctx.fillStyle = C.gris; ctx.font = '600 28px "Inter", sans-serif';
     for (const l of lignes(ctx, tete.sous.toUpperCase(), W - 2 * M).slice(0, 2)) { ctx.fillText(l, M, y); y += 38; }
-    y += 100; ctx.fillStyle = C.encre; ctx.font = '800 92px "Fraunces", Georgia, serif';  // 100 : place des capitales
+    y += 100; ctx.fillStyle = C.encre; ctx.font = '900 92px "Inter", sans-serif';  // 100 : place des capitales
     for (const l of lignes(ctx, tete.titre, W - 2 * M).slice(0, 3)) { ctx.fillText(l, M, y); y += 100; }
     y += 10;
   }
@@ -79,7 +79,7 @@ async function dessiner(canvas, format, choix, tete) {
   let deborde = false;
   const els = choix.elements;
   // puces
-  ctx.font = '500 36px "Instrument Sans", sans-serif';
+  ctx.font = '500 36px "Inter", sans-serif';
   for (const e of els.filter(e => e.type === "puce")) {
     const ls = lignes(ctx, e.texte, W - 2 * M - 40);
     if (y + ls.length * 48 + 16 > bas) { deborde = true; break; }
@@ -96,16 +96,16 @@ async function dessiner(canvas, format, choix, tete) {
       const x = M + k * ((W - 2 * M) / 2 + 10), w = (W - 2 * M) / 2 - 10;
       ctx.fillStyle = C.carte; ctx.strokeStyle = C.trait; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.roundRect(x, y, w, 150, 20); ctx.fill(); ctx.stroke();
-      ctx.fillStyle = C.encre; ctx.font = '800 54px "Fraunces", Georgia, serif'; ctx.fillText(lignes(ctx, e.valeur, w - 40)[0], x + 24, y + 70);
-      ctx.fillStyle = C.gris; ctx.font = '600 26px "Instrument Sans", sans-serif'; ctx.fillText(lignes(ctx, e.libelle, w - 40)[0], x + 24, y + 116);
+      ctx.fillStyle = C.encre; ctx.font = '900 54px "Inter", sans-serif'; ctx.fillText(lignes(ctx, e.valeur, w - 40)[0], x + 24, y + 70);
+      ctx.fillStyle = C.gris; ctx.font = '600 26px "Inter", sans-serif'; ctx.fillText(lignes(ctx, e.libelle, w - 40)[0], x + 24, y + 116);
     });
     y += 170;
   }
   // jauges
   for (const e of els.filter(e => e.type === "jauge")) {
     if (y + 120 > bas) { deborde = true; break; }
-    ctx.fillStyle = C.encre; ctx.font = '800 50px "Fraunces", Georgia, serif'; ctx.fillText(`${e.valeur} %`, M, y + 46);
-    ctx.font = '600 30px "Instrument Sans", sans-serif'; ctx.fillText(lignes(ctx, e.libelle, W - 2 * M - 220)[0], M + 200, y + 42);
+    ctx.fillStyle = C.encre; ctx.font = '900 50px "Inter", sans-serif'; ctx.fillText(`${e.valeur} %`, M, y + 46);
+    ctx.font = '600 30px "Inter", sans-serif'; ctx.fillText(lignes(ctx, e.libelle, W - 2 * M - 220)[0], M + 200, y + 42);
     ctx.fillStyle = C.trait; ctx.beginPath(); ctx.roundRect(M, y + 70, W - 2 * M, 22, 11); ctx.fill();
     ctx.fillStyle = C.accent; ctx.beginPath(); ctx.roundRect(M, y + 70, (W - 2 * M) * Math.min(e.valeur, 100) / 100, 22, 11); ctx.fill();
     if (e.repere != null) { ctx.fillStyle = C.encre; ctx.fillRect(M + (W - 2 * M) * e.repere / 100 - 2, y + 60, 5, 42); }
@@ -113,11 +113,11 @@ async function dessiner(canvas, format, choix, tete) {
   }
   // pied : source et adresse
   ctx.fillStyle = C.trait; ctx.fillRect(M, H - 130, W - 2 * M, 2);
-  ctx.fillStyle = C.gris; ctx.font = '500 24px "Instrument Sans", sans-serif';
+  ctx.fillStyle = C.gris; ctx.font = '500 24px "Inter", sans-serif';
   const pied = `Sources officielles (Assemblée nationale, Sénat, RNE, HATVP…) · ${new Date().toLocaleDateString("fr-FR")}`;
   ctx.fillText(lignes(ctx, pied, W - 2 * M)[0], M, H - 90);
   if (choix.photo && tete.photo && tete.credit) ctx.fillText(lignes(ctx, `Photo : ${tete.credit}`, W - 2 * M)[0], M, H - 56);
-  ctx.textAlign = "right"; ctx.fillStyle = C.encre; ctx.font = '700 26px "Instrument Sans", sans-serif';
+  ctx.textAlign = "right"; ctx.fillStyle = C.encre; ctx.font = '700 26px "Inter", sans-serif';
   ctx.fillText(location.host.includes("localhost") ? "politiscope" : location.host, W - M, H - 56); ctx.textAlign = "left";
   return deborde;
 }
